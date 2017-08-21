@@ -8,6 +8,5 @@ class WikiPolicy < ApplicationPolicy
 
   def update?
     false
-    # user.admin? or not wiki.published?
-  end
+    end
 end
