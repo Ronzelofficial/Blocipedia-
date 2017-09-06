@@ -1,3 +1,5 @@
+<% if user_is_authorized_to_update? %>
+
 <h1>Edit Wiki</h1>
 
 <div class='row'>
@@ -17,6 +19,9 @@
         <%= f.label :body %>
         <%= f.text_area :body, rows: 12, class: 'form-control', placeholder: 'Enter Body' %>
       </div>
+      <% if current_user.wikis.include?(@wiki) && current_user.premium? || current_user.admin? %>
+        <%= render partial: 'wikis/form', locals: { f: f } %>
+      <% end %>
       <div class='form=group'>
         <%= f.submit 'Save', class: 'btn btn-success' %>
         <%= link_to 'Cancel', wiki_path , class: 'btn btn-danger' %>
@@ -24,3 +29,6 @@
     <% end %>
   </div>
 </div>
+
+
+<% end %>

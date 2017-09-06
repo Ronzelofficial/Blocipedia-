@@ -3,32 +3,7 @@
 
 <%= form_for(resource, as: resource_name, url: user_registration_path) do |f| %>
   <%= devise_error_messages! %>
-<div class = "right side">
-  <div class="club">
-      <%= f.label :driver %><br />
-      <%= f.text_field :driver, autofocus: true %>
-  </div>
 
-  <div class="club">
-      <%= f.label :Threewood, "3-Wood"%><br />
-      <%= f.text_field :Threewood, autofocus: true %>
-  </div>
-
-  <div class="club">
-      <%= f.label :hybrid %><br />
-      <%= f.text_field :hybrid, autofocus: true %>
-  </div>
-
-  <div class="club">
-      <%= f.label :eightiron, "8-Iron" %><br />
-      <%= f.text_field :eightiron, autofocus: true %>
-  </div>
-
-  <div class="club">
-      <%= f.label :nineiron, "9-Iron" %><br />
-      <%= f.text_field :nineiron, autofocus: true %>
-  </div>
-</div>
 
 <div class = "leftside">
   <div class="field">

@@ -1,0 +1,9 @@
+<% if current_user.role == 'standard' || current_user.role == 'admin' %>
+  <%= form_tag charges_path do %>
+    <h4>Click the button!</h4>
+    <script class='stripe-button' src="https://checkout.stripe.com/checkout.js" data-key="<%= @stripe_btn_data[:key] %>" data-amount="<%= @stripe_btn_data[:amount] %>" data-description="<%= @stripe_btn_data[:description] %>" ></script>
+  <% end %>
+<% else %>
+  <h2>Follow the link below to downgrade your account to standard.</h2>
+  <%= link_to "Downgrade account", charges_destroy_path, class: 'btn btn-danger', data: { confirm: "Are you sure? This action will result in your private wikis becoming public." } %>
+<% end %>

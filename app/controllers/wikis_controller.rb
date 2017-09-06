@@ -1,6 +1,6 @@
 class WikisController < ApplicationController
   def index
-    @wikis = Wiki.all
+    @wikis = Wiki.visible_to(current_user)
   end
 
   def show
@@ -15,6 +15,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.new
     @wiki.title= params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
+    @wiki.user = current_user
 
     if @wiki.save
       flash[:notice]="Twas Saved"
@@ -30,7 +32,8 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
     @wiki.title= params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
-    authorize @wiki
+    @wiki.private = params[:wiki][:private]
+
 
     if @wiki.save
       flash[:notice]="Twas Updated"
@@ -42,7 +45,7 @@ class WikisController < ApplicationController
     @wiki = Wiki.find(params[:id])
 
     if @wiki.destroy
-      flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
+      flash[:notice] = "\"#{@wiki.title}\" was deleted."
       redirect_to wikis_path
     else
       flash.now[:alert] = "There was an error deleting the wiki."
