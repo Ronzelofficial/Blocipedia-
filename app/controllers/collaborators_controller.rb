@@ -19,9 +19,6 @@ class CollaboratorsController < ApplicationController
      if @collaborator.save
        flash[:notice] = "Collaborator added."
        redirect_to edit_wiki_path(@wiki)
-     else
-       flash[:notice] = "Error. Please try again."
-       redirect_to edit_wiki_path(@wiki)
      end
    end
  end
@@ -32,9 +29,6 @@ class CollaboratorsController < ApplicationController
 
    if @collaborator.destroy
      flash[:notice] = "Collaborator removed."
-     redirect_to edit_wiki_path(@wiki)
-   else
-     flash[:alert] = "Error. Please try again."
      redirect_to edit_wiki_path(@wiki)
    end
  end

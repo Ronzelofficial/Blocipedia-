@@ -3,9 +3,6 @@
 <div class="row">
   <div class="col-md-8">
     <p><%= markdown(@wiki.body) %></p>
-    <small>
-    <i>submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.email %></i> <br>
-    </small>
   </div>
 
   <div class="col-md-4">

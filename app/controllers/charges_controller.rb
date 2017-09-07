@@ -1,4 +1,14 @@
 class ChargesController < ApplicationController
+
+  def new
+    @stripe_btn_data = {
+      key: "#{ Rails.configuration.stripe[:publishable_key] }",
+      description: "Premium Membership - #{current_user.email}",
+      amount: 10_00
+    }
+  end
+
+  
   def create
     @user = current_user
 
@@ -25,13 +35,6 @@ class ChargesController < ApplicationController
       redirect_to new_charge_path
   end
 
-  def new
-    @stripe_btn_data = {
-      key: "#{ Rails.configuration.stripe[:publishable_key] }",
-      description: "Premium Membership - #{current_user.email}",
-      amount: 10_00
-    }
-  end
 
   def destroy
     @user = current_user
