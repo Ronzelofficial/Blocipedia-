@@ -27,5 +27,8 @@
         <%= link_to 'Cancel', wiki_path , class: 'btn btn-danger' %>
       </div>
     <% end %>
+    <% if @wiki.private  %>
+  <%= render partial: 'collaborators/collaborator' %>
+<% end %>
   </div>
 </div>

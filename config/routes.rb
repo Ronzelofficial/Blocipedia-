@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'charges/destroy'
   resources :users, only: [:new, :create]
   resources :wikis
+  resources :collaborators, only: [:create, :destroy]
   resources :charges, only: [:new, :create, :destroy]
 
   get 'about' => 'welcome#about'
